@@ -1,9 +1,7 @@
 function getCalculatePrice(inputId){
     const inputeField = document.getElementById(inputId);
     const inputeFieldStiring = inputeField.value;
-    console.log(typeof inputeFieldStiring);
-
-    const carentInputField = parseInt(inputeFieldStiring);
+    const carentInputField = parseFloat(inputeFieldStiring);
     inputeField.value = '';
     return carentInputField;
 
@@ -27,7 +25,7 @@ document.getElementById('btn-calculate').addEventListener('click', function(){
     const rantPrice1 = document.getElementById('rent-price').value;
     const clothesPrice1 = document.getElementById('clothes-price').value;
     if(isNaN(foodPrice1) == true || isNaN(rantPrice1) == true  || isNaN(clothesPrice1) == true) {
-        alert('pleace input a number')
+        alert('pleace input a number');
     }
     else{
         const foodPrice = getCalculatePrice('food-price');
@@ -59,6 +57,10 @@ document.getElementById('btn-save').addEventListener('click', function(){
     const saveBalance = getCalculatePrice('save-banance');
     const previousBlance = getIncome('total-income');
     const totalSaveBalance = (previousBlance / 100) * saveBalance;
+    if(previousBlance < totalSaveBalance){
+        alert('ammaout er caite besi hoye gese');
+        return;
+    }
 
     setCalculatePrice('total-save', totalSaveBalance);
 
